@@ -20,7 +20,7 @@ const server = http.createServer(app);
 // Configurar Socket.IO corretamente
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "https://FIND-ME.vercel.app"], // depois pode mudar para a porta do React
+    origin: ["https://find-me-i101.onrender.com", "https://find-me-azure.vercel.app"], // depois pode mudar para a porta do React
     methods: ["GET", "POST"]
   }
 });
