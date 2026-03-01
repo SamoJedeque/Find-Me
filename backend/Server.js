@@ -8,10 +8,15 @@ const app = require("./src/app");
 
 
 // Conectar banco
-sequelize.sync()
-  .then(() => console.log("Banco conectado"))
-  .catch(err => console.error("Erro no banco:", err));
-
+if (process.env.NODE_ENV !== "production") {
+  sequelize.sync()
+    .then(() => console.log("Banco sincronizado"))
+    .catch(err => console.error(err));
+} else {
+  sequelize.authenticate()
+    .then(() => console.log("Banco conectado"))
+    .catch(err => console.error(err));
+}
 
 // Criar servidor HTTP
 const server = http.createServer(app);
